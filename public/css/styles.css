@@ -1,0 +1,40 @@
+body {
+	background-color: rgb(16, 20, 41);
+	padding: 20px;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	}
+
+main {
+	background-color: rgb(16, 20, 41);
+}
+
+header {
+	margin: 5px;
+	padding: 10px;
+	color: white;
+}
+
+.img-prin1 {
+	border-radius: 10px;
+}
+ 
+footer{
+	position: fixed;
+	width: 100%;
+	bottom: 0;
+	left: 0;
+	text-align: center;
+	text-align: center;
+	color: white;
+}
+
+.card-footer {
+	padding: 5px;
+	border-radius: 10px;
+	text-align: center;
+
+
+}

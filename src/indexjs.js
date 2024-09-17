@@ -2,12 +2,8 @@ const arrayNombres=[];
 const arrayBilletera=[];
 const arrayTransac=[];
 
-function resolver(){
-    registrarDatos();
-    muestraDatos();
-}
-
 function registrarDatos(){
+
     let nombre = document.getElementById("nombreDeUsuario").value.trim();
 
     arrayNombres.push(nombre);
@@ -19,11 +15,22 @@ function registrarDatos(){
     let transac = document.getElementById("numTransacciones").value.trim();
 
     arrayTransac.push(transac);
+
+    if (!nombre || !billetera || !transac) {
+        alert("Por favor, rellena todos los datos");
+        return;
+    }
 }
 
 function muestraDatos(){
-    console.log(arrayNombres);
-    console.log(arrayBilletera);
-    console.log(arrayTransac);
+
+    var datos="";
+
+    for (var x=0; x<arrayNombres.length; x++){
+        datos += '<li>'+arrayNombres[x] + " - " +arrayBilletera[x] + " - " + arrayTransac[x] + '</li>';
+    }
+
+    const listaDatos = document.getElementById("listaDatos");
+    listaDatos.innerHTML = datos;
 }
 

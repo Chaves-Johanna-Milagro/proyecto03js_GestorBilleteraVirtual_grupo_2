@@ -27,11 +27,18 @@
 
             <div>
                 <label class="numTransacciones">Numero de transacciones realizadas</label>
-                <input type="text" id="numTransacciones">
+                <input type="number" id="numTransacciones">
             </div>
+            
+            <button id="botonRegistrar" onclick="registrarDatos()" >Registrar</button> 
 
-            <button id="botonRegistrar">Registrar</button> 
+            <button id="botonMostrar" onclick="muestraDatos()" >Mostrar Datos</button> 
+
+            <button id="botonMayores" onclick="muestraMayores()" >Mayor Cantidad Transacciones</button> 
         
+        </div>
+        <div>
+            <ul id="listaDatos"></ul>
         </div>
     </main>
 	<script src="/src/indexjs.js"></script>

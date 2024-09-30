@@ -1,17 +1,21 @@
 const express = require("express");
+
 const app = express();
-const path = require("path");
 
-
-app.use(express.static(path.join(__dirname, "public")));
-
-
+//endpoint
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "/public/view/index.html"));
+  res.sendFile(__dirname+"/public/view/index.html");
 });
 
+//routing
+app.use('/public', express.static(__dirname+"/public"));
+app.use('/src', express.static(__dirname+"/src"));
+app.use('/css', express.static(__dirname+"/css"));
+app.use('/view', express.static(__dirname+"/view"));
+app.use('/node_modules', express.static(__dirname+"/node_modules"));
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`escuchando http://localhost:${PORT}`);
-});
+
+//listening
+app.listen(5000, ()=>{
+  console.log("Servidor corriendo");    
+})

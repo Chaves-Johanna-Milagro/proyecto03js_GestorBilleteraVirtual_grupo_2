@@ -43,12 +43,19 @@ function getMaxTransac(){
         let billeterasCont = arrayBilletera[i];
         let transaccionesCont = arrayTransac[i];
 
-        if(!maxTransac[usuariosCont] || transaccionesCont > maxTransac[usuariosCont].transacciones) {
+        if(!maxTransac[usuariosCont]){
             maxTransac[usuariosCont] = {
-                usuarios : usuariosCont,
                 billeteras : billeterasCont,
-                transacciones : transaccionesCont
+                transacciones : transaccionesCont,
             };
+        }
+        //se los convierte a numeros estrictamente pq sino los compara como texto y da errores
+        if(parseInt(transaccionesCont) > parseInt(maxTransac[usuariosCont].transacciones)) {
+            maxTransac[usuariosCont] = {
+                billeteras : billeterasCont,
+                transacciones : transaccionesCont,
+            };
+            
         }
 
     }

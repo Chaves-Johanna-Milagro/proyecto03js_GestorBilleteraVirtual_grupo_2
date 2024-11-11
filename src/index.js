@@ -5,21 +5,19 @@ const arrayTransac=[];
 function registrarDatos(){
 
     let nombre = document.getElementById("nombreDeUsuario").value.trim();
-
-    arrayNombres.push(nombre);
-
     let billetera = document.getElementById("nombreBilletera").value.trim();
-
-    arrayBilletera.push(billetera);
-
     let transac = document.getElementById("numTransacciones").value.trim();
 
-    arrayTransac.push(transac);
-
-    if (!nombre || !billetera || !transac) {
+    if (!nombre || !transac) {
         alert("Por favor, rellena todos los datos");
         return;
     }
+
+    arrayNombres.push(nombre);
+
+    arrayBilletera.push(billetera);
+
+    arrayTransac.push(transac); 
 
 }
 
@@ -37,36 +35,37 @@ function muestraDatos(){
 
 function getMaxTransac(){
 
-    let maxTransac = {} //almacenará los datos con el mayor num de transacciones
+    const maxTransac = {} //almacenará los datos con el mayor num de transacciones
 
     for(let i=0; i<arrayNombres.length; i++){
 
-        let usuarios = arrayNombres[i];
-        let billeteras = arrayBilletera[i];
-        let transacciones = arrayTransac[i];
+        let usuariosCont = arrayNombres[i];
+        let billeterasCont = arrayBilletera[i];
+        let transaccionesCont = arrayTransac[i];
 
-        if(!maxTransac[usuarios] || maxTransac[usuarios].transacciones < transacciones)
-        {
-            maxTransac[usuarios] = {
-                billeteras : billeteras,
-                transacciones : transacciones
+        if(!maxTransac[usuariosCont] || transaccionesCont > maxTransac[usuariosCont].transacciones) {
+            maxTransac[usuariosCont] = {
+                usuarios : usuariosCont,
+                billeteras : billeterasCont,
+                transacciones : transaccionesCont
             };
         }
+
     }
-
     return maxTransac;
-
 }
+
+
 
 function muestraMayores(){
     let muestra = "";
     let maxTransactions = getMaxTransac(); //almacenará los datos obtenidos en el metodo getMaxTransac()
 
-    for(let usuario in maxTransactions){
-        let billetera = maxTransactions[usuario].billeteras;
-        let transactions = maxTransactions[usuario].transacciones;
+    for(let usuarioMues in maxTransactions){
+        let billeteraMues = maxTransactions[usuarioMues].billeteras;
+        let transactionsMues = maxTransactions[usuarioMues].transacciones;
 
-        muestra += '<li>'+usuario + " - " +billetera + " - " + transactions + '</li>';
+        muestra += '<li>'+usuarioMues + " - " +billeteraMues + " - " + transactionsMues + '</li>';
     }
 
     const listaDatosMax = document.getElementById("listaDatosMax");
